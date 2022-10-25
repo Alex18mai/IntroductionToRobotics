@@ -49,7 +49,7 @@ int mapPotAnalog(int value){
   return map(value, minPotValue, maxPotValue, minAnalogValue, maxAnalogValue);
 }
 
-// function for setting the colors of the RGB led
+// function for setting the color of the RGB led
 void setColor(int redValue, int greenValue, int blueValue) {
   if (commonAnode) {
     redValue = maxAnalogValue - redValue;
@@ -75,6 +75,6 @@ void loop() {
   // print the led values
   Serial.println(redValue + semicolon + greenValue + semicolon + blueValue);
   
-  // set the colors of the led
+  // set the led color
   setColor(redValue, greenValue, blueValue);
 }
