@@ -44,6 +44,23 @@ void setup() {
   Serial.begin(9600);
 }
 
+// function for mapping a pot value (0, 1023) to an analog value (0, 255) 
+int mapPotAnalog(int value){
+  return map(value, minPotValue, maxPotValue, minAnalogValue, maxAnalogValue);
+}
+
+// function for setting the colors of the RGB led
+void setColor(int redValue, int greenValue, int blueValue) {
+  if (commonAnode) {
+    redValue = maxAnalogValue - redValue;
+    greenValue = maxAnalogValue - greenValue;
+    blueValue = maxAnalogValue - blueValue;
+  }
+  analogWrite(redPin, redValue); 
+  analogWrite(greenPin, greenValue);
+  analogWrite(bluePin, blueValue);
+}
+
 void loop() {
   // read the potentiometer values
   potRedValue = analogRead(potRedPin);
@@ -60,21 +77,4 @@ void loop() {
   
   // set the colors of the led
   setColor(redValue, greenValue, blueValue);
-}
-
-// function for mapping a pot value (0, 1023) to an analog value (0, 255) 
-int mapPotAnalog(int value){
-  return map(value, minPotValue, maxPotValue, minAnalogValue, maxAnalogValue);
-}
-
-// function for setting the colors of the RGB led
-void setColor(int redValue, int greenValue, int blueValue) {
-  if (commonAnode) {
-    redValue = maxAnalogValue - redValue;
-    greenValue = maxAnalogValue - greenValue;
-    blueValue = maxAnalogValue - blueValue;
-  }
-  analogWrite(redPin, redValue); 
-  analogWrite(greenPin, greenValue);
-  analogWrite(bluePin, blueValue);
 }
