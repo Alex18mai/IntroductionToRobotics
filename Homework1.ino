@@ -1,12 +1,12 @@
 // Analog-In signal from potentiometers
-const int redPin = 9,
-          greenPin = 10,
-          bluePin = 11;
-
-// PWM-enabled pins in order to emulate Analog-Out
 const int potRedPin = A2,
           potGreenPin = A1,
           potBluePin = A0;
+
+// PWM-enabled pins in order to emulate Analog-Out
+const int redPin = 9,
+          greenPin = 10,
+          bluePin = 11;
 
 // value constants
 const int minAnalogValue = 0,
