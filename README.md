@@ -6,7 +6,7 @@ Introduction to Robotics laboratory homeworks, taken in the 3rd year at the Facu
 
 #### Task Requirements
 
-Use 3 potentiometers to digitally control a RGB led.
+Control a RGB led using 3 potentiometers.
 
 #### Picture
 ![Homework 1](assets/Homework1.jpg)
