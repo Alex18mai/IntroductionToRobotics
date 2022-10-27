@@ -9,6 +9,6 @@ Introduction to Robotics laboratory homeworks, taken in the 3rd year at the Facu
 Use 3 potentiometers to digitally control a RGB led.
 
 #### Picture
-![Homework 1](assets/Homework1.jpeg)
+![Homework 1](assets/Homework1.jpg)
 #### Video
 [![Homework 1 - Video](https://img.youtube.com/vi/odUR5Z-gZcE/0.jpg)](https://www.youtube.com/watch?v=odUR5Z-gZcE)
