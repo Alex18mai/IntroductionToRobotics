@@ -1,3 +1,5 @@
+// Introduction to Robotics - Homework 1 - Control a RGB led using 3 potentiometers
+
 // Analog-In signal from potentiometers
 const int potRedPin = A2,
           potGreenPin = A1,
@@ -29,7 +31,6 @@ int potRedValue = 0,
     greenValue = 0, 
     blueValue = 0;
 
-
 void setup() {
   // pins for the 3 potentiometers
   pinMode(potRedPin, INPUT);
@@ -42,23 +43,6 @@ void setup() {
   pinMode(bluePin, OUTPUT);
   
   Serial.begin(9600);
-}
-
-// function for mapping a pot value (0, 1023) to an analog value (0, 255) 
-int mapPotAnalog(int value){
-  return map(value, minPotValue, maxPotValue, minAnalogValue, maxAnalogValue);
-}
-
-// function for setting the color of the RGB led
-void setColor(int redValue, int greenValue, int blueValue) {
-  if (commonAnode) {
-    redValue = maxAnalogValue - redValue;
-    greenValue = maxAnalogValue - greenValue;
-    blueValue = maxAnalogValue - blueValue;
-  }
-  analogWrite(redPin, redValue); 
-  analogWrite(greenPin, greenValue);
-  analogWrite(bluePin, blueValue);
 }
 
 void loop() {
@@ -77,4 +61,21 @@ void loop() {
   
   // set the led color
   setColor(redValue, greenValue, blueValue);
+}
+
+// function for mapping a pot value (0, 1023) to an analog value (0, 255) 
+int mapPotAnalog(int value){
+  return map(value, minPotValue, maxPotValue, minAnalogValue, maxAnalogValue);
+}
+
+// function for setting the color of the RGB led
+void setColor(int redValue, int greenValue, int blueValue) {
+  if (commonAnode) {
+    redValue = maxAnalogValue - redValue;
+    greenValue = maxAnalogValue - greenValue;
+    blueValue = maxAnalogValue - blueValue;
+  }
+  analogWrite(redPin, redValue); 
+  analogWrite(greenPin, greenValue);
+  analogWrite(bluePin, blueValue);
 }
