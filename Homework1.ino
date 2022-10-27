@@ -25,7 +25,7 @@ const String semicolon = "; ";
 // set true if the led has a common anode and false if the led has a common cathode
 const bool commonAnode = false;
 
-// variables used for the pot and led values
+// variables used for the potentiometer and led values
 int potRedValue = 0, 
     potGreenValue = 0, 
     potBlueValue = 0,
