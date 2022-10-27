@@ -67,7 +67,7 @@ void loop() {
   setColor(redValue, greenValue, blueValue);
 }
 
-// function for mapping a pot value (0, 1023) to a led value (0, 255) 
+// function for mapping a potentiometer value (0, 1023) to a led value (0, 255) 
 int mapPotToLed(int value){
   return map(value, minPotValue, maxPotValue, minLedValue, maxLedValue);
 }
