@@ -50,30 +50,30 @@ void setup() {
 }
 
 void loop() {
-  // read the potentiometer values
+  readPotValues();
+  computeLedValues();
+  setColor();
+}
+
+// function for reading the potentiometer values
+void readPotValues() {
   potRedValue = analogRead(potRedPin);
   potGreenValue = analogRead(potGreenPin);
   potBlueValue = analogRead(potBluePin);
-
-  // compute the led values  
-  redValue = mapPotToLed(potRedValue);
-  greenValue = mapPotToLed(potGreenValue);
-  blueValue = mapPotToLed(potBlueValue);
-
-  // print the led values
-  Serial.println(redValue + semicolon + greenValue + semicolon + blueValue);
-  
-  // set the led color
-  setColor(redValue, greenValue, blueValue);
 }
 
-// function for mapping a potentiometer value (0, 1023) to a led value (0, 255) 
-int mapPotToLed(int value){
-  return map(value, minPotValue, maxPotValue, minLedValue, maxLedValue);
+// function for mapping the potentiometer values (0, 1023) to a led values (0, 255) 
+void computeLedValues() {
+  redValue = map(potRedValue, minPotValue, maxPotValue, minLedValue, maxLedValue);
+  greenValue = map(potGreenValue, minPotValue, maxPotValue, minLedValue, maxLedValue);
+  blueValue = map(potBlueValue, minPotValue, maxPotValue, minLedValue, maxLedValue);
+
+  // print led values
+  Serial.println(redValue + semicolon + greenValue + semicolon + blueValue);
 }
 
 // function for setting the color of the RGB led
-void setColor(int redValue, int greenValue, int blueValue) {
+void setColor() {
   if (commonAnode) {
     redValue = maxLedValue - redValue;
     greenValue = maxLedValue - greenValue;
