@@ -11,10 +11,13 @@ const int redPin = 9,
           bluePin = 11;
 
 // value constants
-const int minAnalogValue = 0,
-          maxAnalogValue = 255,
+const int minLedValue = 0,
+          maxLedValue = 255,
           minPotValue = 0, 
           maxPotValue = 1023;
+
+// the data rate for the Serial port in bps
+const int serialDataRate = 9600;
 
 // semicolon string used for printing to the Serial Monitor
 const String semicolon = "; ";
@@ -42,7 +45,8 @@ void setup() {
   pinMode(greenPin, OUTPUT);
   pinMode(bluePin, OUTPUT);
   
-  Serial.begin(9600);
+  // Serial port
+  Serial.begin(serialDataRate);
 }
 
 void loop() {
@@ -51,10 +55,10 @@ void loop() {
   potGreenValue = analogRead(potGreenPin);
   potBlueValue = analogRead(potBluePin);
 
-  // calculate the led values  
-  redValue = mapPotAnalog(potRedValue);
-  greenValue = mapPotAnalog(potGreenValue);
-  blueValue = mapPotAnalog(potBlueValue);
+  // compute the led values  
+  redValue = mapPotToLed(potRedValue);
+  greenValue = mapPotToLed(potGreenValue);
+  blueValue = mapPotToLed(potBlueValue);
 
   // print the led values
   Serial.println(redValue + semicolon + greenValue + semicolon + blueValue);
@@ -63,17 +67,17 @@ void loop() {
   setColor(redValue, greenValue, blueValue);
 }
 
-// function for mapping a pot value (0, 1023) to an analog value (0, 255) 
-int mapPotAnalog(int value){
-  return map(value, minPotValue, maxPotValue, minAnalogValue, maxAnalogValue);
+// function for mapping a pot value (0, 1023) to a led value (0, 255) 
+int mapPotToLed(int value){
+  return map(value, minPotValue, maxPotValue, minLedValue, maxLedValue);
 }
 
 // function for setting the color of the RGB led
 void setColor(int redValue, int greenValue, int blueValue) {
   if (commonAnode) {
-    redValue = maxAnalogValue - redValue;
-    greenValue = maxAnalogValue - greenValue;
-    blueValue = maxAnalogValue - blueValue;
+    redValue = maxLedValue - redValue;
+    greenValue = maxLedValue - greenValue;
+    blueValue = maxLedValue - blueValue;
   }
   analogWrite(redPin, redValue); 
   analogWrite(greenPin, greenValue);
