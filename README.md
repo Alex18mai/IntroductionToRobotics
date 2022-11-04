@@ -22,7 +22,7 @@ Control a RGB led using 3 potentiometers.
 
 <details><summary> <b>Video</b> </summary></br>
 
-[![Homework 1 - Video](https://img.youtube.com/vi/odUR5Z-gZcE/0.jpg)](https://www.youtube.com/watch?v=odUR5Z-gZcE)
+[![Homework 1 - Video](https://img.youtube.com/vi/odUR5Z-gZcE/0.jpg?)](https://www.youtube.com/watch?v=odUR5Z-gZcE)
 
 </details>
 
@@ -86,6 +86,6 @@ Additional info:
 
 <details><summary> <b>Video</b> </summary></br>
 
-[![Homework 2 - Video](https://img.youtube.com/vi/TJ6v7SmZhKY/0.jpg)](https://www.youtube.com/watch?v=TJ6v7SmZhKY)
+[![Homework 2 - Video](https://img.youtube.com/vi/TJ6v7SmZhKY/0.jpg?)](https://www.youtube.com/watch?v=TJ6v7SmZhKY)
 
 </details>
