@@ -12,3 +12,14 @@ Control a RGB led using 3 potentiometers.
 ![Homework 1](assets/Homework1.jpg)
 #### Video
 [![Homework 1 - Video](https://img.youtube.com/vi/odUR5Z-gZcE/0.jpg)](https://www.youtube.com/watch?v=odUR5Z-gZcE)
+
+### [Homework #2](../master/Homework2.ino)
+
+#### Task Requirements
+
+Build the traffic lights for a crosswalk.
+
+#### Picture
+![Homework 2](assets/Homework2.jpg)
+#### Video
+[![Homework 2 - Video](https://img.youtube.com/vi/TJ6v7SmZhKY/0.jpg)](https://www.youtube.com/watch?v=TJ6v7SmZhKY)
