@@ -1,4 +1,3 @@
-
 // Introduction to Robotics - Homework 3 - Draw on the display of a 7-segment display using a joystick
 
 #define NONE -1
