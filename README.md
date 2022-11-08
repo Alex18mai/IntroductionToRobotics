@@ -89,3 +89,23 @@ Additional info:
 [![Homework 2 - Video](https://img.youtube.com/vi/TJ6v7SmZhKY/0.jpg?)](https://www.youtube.com/watch?v=TJ6v7SmZhKY)
 
 </details>
+
+
+<hr>
+
+
+### [Homework #3](../master/Homework3.ino) 
+
+<details><summary> <b>Task Requirements</b> </summary></br>
+
+Draw on the display of a 7-segment display using a joystick.
+
+</details>
+
+<details><summary> <b>Picture</b> </summary></br>
+
+</details>
+
+<details><summary> <b>Video</b> </summary></br>
+
+</details>
