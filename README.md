@@ -98,7 +98,39 @@ Additional info:
 
 <details><summary> <b>Task Requirements</b> </summary></br>
 
-Draw on the display of a 7-segment display using a joystick.
+Draw on a 7-segment display using a joystick.
+
+</br>
+
+The system will go through 2 states:
+* STATE 1
+  + Trigger : Default state (also initiated after a button press in STATE 2)
+  + Current position : Blinking
+  + Joystick movement (X and Y axis) : Move current position to one of the neighbors
+  + Short button press : Toggle STATE 2
+  + Long button press : Reset the system - segments turn OFF and current position goes to decimal point
+  
+* STATE 2
+  + Trigger: Initiated after a button press in STATE 1
+  + Current position : The value of the segment
+  + Joystick movement (X axis) : Change the value of the segment (from ON to OFF or from OFF to ON)
+  + Short button press : Exit back to STATE 1
+  + Long button press : No action
+
+</br>
+
+Neighbors based on the current segment and joystick movement:
+
+| Current segment |  UP | DOWN | LEFT | RIGHT |
+|:---------------:|:---:|:----:|:----:|:-----:|
+|      **a**      | N/A |   g  |   f  |   b   |
+|      **b**      |  a  |   g  |   f  |  N/A  |
+|      **c**      |  g  |   d  |   e  |   dp  |
+|      **d**      |  g  |  N/A |   e  |   c   |
+|      **e**      |  g  |   d  |  N/A |   c   |
+|      **f**      |  a  |   g  |  N/A |   b   |
+|      **g**      |  a  |   d  |  N/A |  N/A  |
+|      **dp**     | N/A |  N/A |   c  |  N/A  |
 
 </details>
 
