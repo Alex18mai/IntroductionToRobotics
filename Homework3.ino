@@ -1,11 +1,13 @@
-// Introduction to Robotics - Homework 3 - Draw on the display of a 7-segment display using a joystick
+// Introduction to Robotics - Homework 3 - Draw on a 7-segment display using a joystick
 
+// joystick movement
 #define NONE -1
 #define UP 0
 #define DOWN 1
 #define LEFT 2
 #define RIGHT 3
 
+// switch clicks
 #define NO_BUTTON_CLICK 0
 #define SHORT_BUTTON_CLICK 1
 #define LONG_BUTTON_CLICK 2
@@ -33,7 +35,7 @@ const int segments[segSize] = {
   pinA, pinB, pinC, pinD, pinE, pinF, pinG, pinDP
 };
 
-// the move matrix based on the joystick actions
+// the move matrix based on the joystick movement
 const int moveMatrix[segSize][4] = {
 // UP DOWN LEFT RIGHT  
   {0,   6,   5,   1}, //a
@@ -68,7 +70,8 @@ const bool commonAnode = false;
 // array where the value for each segment is kept
 int segValues[segSize];
 
-int currSegment = 7, // the current segment - initialized with dp
+// the variables used for the current segment (initialized with dp), light blinking, joystick debounce and switch debounce
+int currSegment = 7,
 
     blinkState = HIGH,
 
@@ -79,11 +82,13 @@ int currSegment = 7, // the current segment - initialized with dp
     lastSwitchValue = HIGH,
     switchState = HIGH;
 
+// the variables used for keeping track of the last time an action was performed
 unsigned long long lastBlinkTime = 0,
                    lastJoystickDebounceTime = 0,
                    lastSwitchDebounceTime = 0,
                    lastSwitchChange = 0;
 
+// the variables used for the locked in state and to ignore the next release after a long press of the switch
 bool segmentLocked = false,
      ignoreNextRelease = false;
 
@@ -114,10 +119,10 @@ void loop() {
 // function that checks the switch action and resets the display / locks in the segment
 void determineResetAndSegmentLocked(){
   int switchAction = checkSwitchAction();
-  if (switchAction == SHORT_BUTTON_CLICK) {
+  if (switchAction == SHORT_BUTTON_CLICK) { // lock segment
     segmentLocked = !segmentLocked;
   }  
-  else if (switchAction == LONG_BUTTON_CLICK) {
+  else if (switchAction == LONG_BUTTON_CLICK) { // reset
     for (int i = 0; i < segSize; i++) {
       segValues[i] = LOW;
     }    
@@ -152,7 +157,7 @@ int checkSwitchAction(){
     }
   }
 
-  if (millis() - lastSwitchChange > longButtonClickDelay) {
+  if (!segmentLocked && millis() - lastSwitchChange > longButtonClickDelay) {
     if (switchState == LOW) {
       ignoreNextRelease = true;
       return LONG_BUTTON_CLICK;          
@@ -195,7 +200,7 @@ int checkJoystickMovement(){
 
   if (millis() - lastJoystickDebounceTime > debounceDelay && joystickDebounceState == NONE) {
     if (abs(xValue - medianValue) > abs(yValue - medianValue)) { // the X coordinate has a bigger change
-      if (xValue < minThreshold){
+      if (xValue < minThreshold) {
         joystickDebounceState = DOWN;
         return DOWN;
       }
@@ -205,7 +210,7 @@ int checkJoystickMovement(){
       }
     }
     else { // the Y coordinate has a bigger change
-      if (yValue < minThreshold){
+      if (yValue < minThreshold) {
         joystickDebounceState = LEFT;
         return LEFT;
       }
