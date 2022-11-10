@@ -136,8 +136,12 @@ Neighbors based on the current segment and joystick movement:
 
 <details><summary> <b>Picture</b> </summary></br>
 
+![Homework 3](assets/Homework3.jpg)
+
 </details>
 
 <details><summary> <b>Video</b> </summary></br>
+
+[![Homework 3 - Video](https://img.youtube.com/vi/f73uFziqNx4/0.jpg?)](https://www.youtube.com/watch?v=f73uFziqNx4)
 
 </details>
