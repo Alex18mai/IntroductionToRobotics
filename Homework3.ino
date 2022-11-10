@@ -27,8 +27,10 @@ const int pinA = 9,
           pinG = 11,
           pinDP = 4;
 
-// constant for the number of segments
-const int segSize = 8;
+// constant for the number of segments, number of directions and start segment (dp)
+const int segSize = 8,
+          dirSize = 4,
+          startSegment = 7;
 
 // the pins for each segment
 const int segments[segSize] = { 
@@ -36,7 +38,7 @@ const int segments[segSize] = {
 };
 
 // the move matrix based on the joystick movement
-const int moveMatrix[segSize][4] = {
+const int moveMatrix[segSize][dirSize] = {
 // UP DOWN LEFT RIGHT  
   {0,   6,   5,   1}, //a
   {0,   6,   5,   1}, //b
@@ -71,7 +73,7 @@ const bool commonAnode = false;
 int segValues[segSize];
 
 // the variables used for the current segment (initialized with dp), light blinking, joystick debounce and switch debounce
-int currSegment = 7,
+int currSegment = startSegment,
 
     blinkState = HIGH,
 
@@ -126,7 +128,7 @@ void determineResetAndSegmentLocked(){
     for (int i = 0; i < segSize; i++) {
       segValues[i] = LOW;
     }    
-    currSegment = 7;
+    currSegment = startSegment;
     segmentLocked = false;
   }
 }
