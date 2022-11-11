@@ -66,7 +66,7 @@ const unsigned long debounceDelay = 25,
                     blinkDelay = 300,
                     longButtonClickDelay = 3000;
 
-// modify if you have common anode
+// modify if the 7-segment display has common anode
 const bool commonAnode = false; 
 
 // array where the value for each segment is kept
@@ -119,7 +119,7 @@ void loop() {
 }
 
 // function that checks the switch action and resets the display / locks in the segment
-void determineResetAndSegmentLocked(){
+void determineResetAndSegmentLocked() {
   int switchAction = checkSwitchAction();
   if (switchAction == SHORT_BUTTON_CLICK) { // lock segment
     segmentLocked = !segmentLocked;
@@ -134,7 +134,7 @@ void determineResetAndSegmentLocked(){
 }
 
 // function that checks if the switch is pressed using debounce + checks if the switch is pressed for a long time
-int checkSwitchAction(){
+int checkSwitchAction() {
   int switchValue = digitalRead(pinSW);
 
   if (switchValue != lastSwitchValue) {
@@ -170,7 +170,7 @@ int checkSwitchAction(){
 }
 
 // function that changes the locked in segment's value based on the joystick movement (X axis)
-void setSegmentValue(){
+void setSegmentValue() {
   int joystickMovement = checkJoystickMovement();
   if (joystickMovement == UP || joystickMovement == DOWN) {
     segValues[currSegment] = !segValues[currSegment];
@@ -178,7 +178,7 @@ void setSegmentValue(){
 }
 
 // function that moves the segment based on the joystick movement
-void moveSegment(){
+void moveSegment() {
   int joystickMovement = checkJoystickMovement();
   if (joystickMovement != NONE) {
     currSegment = moveMatrix[currSegment][joystickMovement];
@@ -186,7 +186,7 @@ void moveSegment(){
 }
 
 // function that checks if the joystick was moved using debounce and returns the corresponding value (NONE, UP, DOWN, LEFT, RIGHT)
-int checkJoystickMovement(){
+int checkJoystickMovement() {
   int xValue = analogRead(pinX);
   int yValue = analogRead(pinY);
   // Serial.println(xValue + semicolon + yValue);
@@ -237,6 +237,11 @@ void displaySegments() {
       digitalWrite(segments[i], blinkState);    
       continue;
     }
-    digitalWrite(segments[i], segValues[i]);    
+    if (commonAnode) {
+      digitalWrite(segments[i], !segValues[i]);      
+    }    
+    else {
+      digitalWrite(segments[i], segValues[i]);   
+    }
   }
 }
