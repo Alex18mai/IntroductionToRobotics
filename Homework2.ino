@@ -74,7 +74,7 @@ void loop() {
 }
 
 // function that checks if the current state should change and does so accordingly
-void manageCurrentState(){
+void manageCurrentState() {
   bool isButtonPressed = buttonPressed();
 
   if (currentState == STATE_CAR_GREEN) {
@@ -119,7 +119,7 @@ void manageCurrentState(){
 }
 
 // function that checks if the button was pressed using debounce
-bool buttonPressed(){
+bool buttonPressed() {
   int reading = digitalRead(buttonPin);
 
   if (reading != lastReading) {
@@ -141,7 +141,7 @@ bool buttonPressed(){
 }
 
 // function that executes the current state
-void executeCurrentState(){
+void executeCurrentState() {
   switch (currentState) {
       case STATE_CAR_GREEN: // red light for people, green light for cars, no buzzer tone              
         setPeopleLights(HIGH, LOW);
@@ -192,18 +192,18 @@ void executeCurrentState(){
     }   
 }
 
-void setPeopleLights(int redValue, int greenValue){
+void setPeopleLights(int redValue, int greenValue) {
   digitalWrite(peopleRedPin, redValue);
   digitalWrite(peopleGreenPin, greenValue);
 }
 
-void setCarLights(int redValue, int yellowValue, int greenValue){
+void setCarLights(int redValue, int yellowValue, int greenValue) {
   digitalWrite(carRedPin, redValue);
   digitalWrite(carYellowPin, yellowValue);
   digitalWrite(carGreenPin, greenValue);
 }
 
-void setBuzzer(int buzzTone){
+void setBuzzer(int buzzTone) {
   if (buzzTone == noBuzzTone) {
     noTone(buzzPin);
   }
