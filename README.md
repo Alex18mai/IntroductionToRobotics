@@ -145,3 +145,26 @@ Neighbors based on the current segment and joystick movement:
 [![Homework 3 - Video](https://img.youtube.com/vi/f73uFziqNx4/0.jpg?)](https://www.youtube.com/watch?v=f73uFziqNx4)
 
 </details>
+
+
+
+<hr>
+
+
+### [Homework #4](../master/Homework4.ino) 
+
+<details><summary> <b>Task Requirements</b> </summary></br>
+
+Move through a 4 digit 7-segment display and increment/decrement the numbers using a joystick.
+
+</details>
+
+<details><summary> <b>Picture</b> </summary></br>
+
+
+</details>
+
+<details><summary> <b>Video</b> </summary></br>
+
+
+</details>
