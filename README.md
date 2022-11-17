@@ -161,10 +161,12 @@ Move through a 4 digit 7-segment display and increment/decrement the numbers usi
 
 <details><summary> <b>Picture</b> </summary></br>
 
+![Homework 4](assets/Homework4.jpg)
 
 </details>
 
 <details><summary> <b>Video</b> </summary></br>
 
+[![Homework 4 - Video](https://img.youtube.com/vi/JqRFzsFz0iI/0.jpg?)](https://www.youtube.com/watch?v=JqRFzsFz0iI)
 
 </details>
