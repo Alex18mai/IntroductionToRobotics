@@ -78,6 +78,7 @@ const byte byteEncodings[encodingsNumber] = {
   B10001110  // F
 };
 
+// the hex display values (between 0 and 15)
 int displayValues[displayCount];
 
 int currDisplay = startDisplay;
@@ -172,6 +173,7 @@ int checkSwitchAction() {
 // function that changes the locked in display's value based on the joystick movement (X axis)
 void setDisplayValue() {
   int joystickMovement = checkJoystickMovement();
+
   if (joystickMovement == UP) {
     displayValues[currDisplay]++;
     if (displayValues[currDisplay] > encodingsNumber - 1) {
@@ -189,6 +191,7 @@ void setDisplayValue() {
 // function that moves the display based on the joystick movement (Y axis)
 void moveDisplay() {
   int joystickMovement = checkJoystickMovement();
+  
   if (joystickMovement == LEFT) {
     currDisplay++;
     if (currDisplay > displayCount - 1) {
@@ -207,7 +210,7 @@ void moveDisplay() {
 int checkJoystickMovement() {
   static int lastXValue = medianValue, lastYValue = medianValue;
   static int joystickDebounceState = NONE;
-  unsigned long long lastJoystickDebounceTime = 0;
+  static unsigned long long lastJoystickDebounceTime = 0;
   
   int xValue = analogRead(pinX);
   int yValue = analogRead(pinY);
