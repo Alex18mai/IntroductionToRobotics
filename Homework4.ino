@@ -28,12 +28,15 @@ const int segD1 = 7,
           segD3 = 5,
           segD4 = 4;
 
+// constants for register size, number of displays and number of encodings
 const int regSize = 8,
           displayCount = 4,
           encodingsNumber = 16;
 
+// the multiplexer delay in ms
 const int muxDelay = 2;
 
+// constants for initial display, initial digit and bit order of the dp segment in encodings
 const int startDisplay = 0,
           startDigit = 0,
           dpBit = 0;
@@ -42,6 +45,9 @@ const int startDisplay = 0,
 const int minThreshold = 300,
           maxThreshold = 700,
           medianValue = 516;
+
+// the data rate for the Serial port in bps
+const int serialDataRate = 9600;
 
 // delay for debounce and blink
 const unsigned long debounceDelay = 25,
@@ -79,10 +85,12 @@ int currDisplay = startDisplay;
 bool displayLocked = false;
 
 void setup() {
+  // initialize the Shift Register pins
   pinMode(latchPin, OUTPUT);
   pinMode(clockPin, OUTPUT);
   pinMode(dataPin, OUTPUT);
 
+  // initialize the displays
   for (int i = 0; i < displayCount; i++) {
     pinMode(displays[i], OUTPUT);
     digitalWrite(displays[i], HIGH);
@@ -92,7 +100,7 @@ void setup() {
   // initialize the switch pin
   pinMode(pinSW, INPUT_PULLUP);
 
-  Serial.begin(9600);
+  Serial.begin(serialDataRate);
 }
 
 void loop() {
@@ -165,10 +173,16 @@ int checkSwitchAction() {
 void setDisplayValue() {
   int joystickMovement = checkJoystickMovement();
   if (joystickMovement == UP) {
-    displayValues[currDisplay] = min(displayValues[currDisplay] + 1, 15);
+    displayValues[currDisplay]++;
+    if (displayValues[currDisplay] > encodingsNumber - 1) {
+      displayValues[currDisplay] = 0;      
+    }    
   } 
   else if (joystickMovement == DOWN) {
-    displayValues[currDisplay] = max(displayValues[currDisplay] - 1, 0);
+    displayValues[currDisplay]--;
+    if (displayValues[currDisplay] < 0) {
+      displayValues[currDisplay] = encodingsNumber - 1;      
+    }  
   }
 }
 
@@ -176,10 +190,16 @@ void setDisplayValue() {
 void moveDisplay() {
   int joystickMovement = checkJoystickMovement();
   if (joystickMovement == LEFT) {
-    currDisplay = min(currDisplay + 1, 3);
+    currDisplay++;
+    if (currDisplay > displayCount - 1) {
+      currDisplay = 0;
+    }
   } 
   else if (joystickMovement == RIGHT) {
-    currDisplay = max(currDisplay - 1, 0);
+    currDisplay--;
+    if (currDisplay < 0) {
+      currDisplay = displayCount - 1;
+    }
   }
 }
 
