@@ -157,6 +157,23 @@ Neighbors based on the current segment and joystick movement:
 
 Move through a 4 digit 7-segment display and increment/decrement the numbers using a joystick.
 
+</br>
+
+The system will go through 2 states:
+* STATE 1
+  + Trigger : Default state (also initiated after a button press in STATE 2)
+  + Current position : Dp segment of digit blinking
+  + Joystick movement (Y axis) : Cycle through digits
+  + Short button press : Toggle STATE 2
+  + Long button press : Reset the system - digits reset to zero and current position goes to the first digit
+  
+* STATE 2
+  + Trigger: Initiated after a button press in STATE 1
+  + Current position : Dp segment of digit stays on
+  + Joystick movement (X axis) : Increment/decrement the number of the current digit in HEX (from 0 to F)
+  + Short button press : Exit back to STATE 1
+  + Long button press : No action
+
 </details>
 
 <details><summary> <b>Picture</b> </summary></br>
