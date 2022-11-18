@@ -28,7 +28,7 @@ const int segD1 = 7,
           segD3 = 5,
           segD4 = 4;
 
-// constants for register size, number of displays and number of encodings
+// constants for register size, number of display digits and number of encodings
 const int regSize = 8,
           displayCount = 4,
           encodingsNumber = 16;
@@ -36,9 +36,9 @@ const int regSize = 8,
 // the multiplexer delay in ms
 const int muxDelay = 2;
 
-// constants for initial display, initial digit and bit order of the dp segment in encodings
-const int startDisplay = 0,
-          startDigit = 0,
+// constants for initial display digit, initial number and bit order of the dp segment in encodings
+const int startDisplayDigit = 0,
+          startNumber = 0,
           dpBit = 0;
 
 // constants for the minimum and maximum thresholds for the joystick + median value
@@ -54,7 +54,7 @@ const unsigned long debounceDelay = 25,
                     dpBlinkDelay = 300,
                     longButtonClickDelay = 3000;
 
-const int displays[displayCount] = {
+const int displayDigits[displayCount] = {
   segD1, segD2, segD3, segD4
 };
 
@@ -81,7 +81,7 @@ const byte byteEncodings[encodingsNumber] = {
 // the hex display values (between 0 and 15)
 int displayValues[displayCount];
 
-int currDisplay = startDisplay;
+int currDisplayDigit = startDisplayDigit;
 
 bool displayLocked = false;
 
@@ -91,11 +91,11 @@ void setup() {
   pinMode(clockPin, OUTPUT);
   pinMode(dataPin, OUTPUT);
 
-  // initialize the displays
+  // initialize the display
   for (int i = 0; i < displayCount; i++) {
-    pinMode(displays[i], OUTPUT);
-    digitalWrite(displays[i], HIGH);
-    displayValues[i] = startDigit;
+    pinMode(displayDigits[i], OUTPUT);
+    digitalWrite(displayDigits[i], HIGH);
+    displayValues[i] = startNumber;
   }
 
   // initialize the switch pin
@@ -110,12 +110,12 @@ void loop() {
     setDisplayValue();        
   }  
   else {
-    moveDisplay();
+    moveDisplayDigit();
   }
-  writeOnDisplays();
+  writeOnDisplay();
 }
 
-// function that checks the switch action and resets the displays / locks in the display
+// function that checks the switch action and resets the display / locks in the display
 void determineResetAndDisplayLocked() {
   int switchAction = checkSwitchAction();
   if (switchAction == SHORT_BUTTON_CLICK) { // lock display
@@ -123,9 +123,9 @@ void determineResetAndDisplayLocked() {
   }  
   else if (switchAction == LONG_BUTTON_CLICK) { // reset
     for (int i = 0; i < displayCount; i++) {
-      displayValues[i] = startDigit;
+      displayValues[i] = startNumber;
     }
-    currDisplay = startDisplay;
+    currDisplayDigit = startDisplayDigit;
     displayLocked = false;
   }
 }
@@ -170,38 +170,38 @@ int checkSwitchAction() {
   return NO_BUTTON_CLICK;
 }
 
-// function that changes the locked in display's value based on the joystick movement (X axis)
+// function that changes the locked in digit's value based on the joystick movement (X axis)
 void setDisplayValue() {
   int joystickMovement = checkJoystickMovement();
 
   if (joystickMovement == UP) {
-    displayValues[currDisplay]++;
-    if (displayValues[currDisplay] > encodingsNumber - 1) {
-      displayValues[currDisplay] = 0;      
+    displayValues[currDisplayDigit]++;
+    if (displayValues[currDisplayDigit] > encodingsNumber - 1) {
+      displayValues[currDisplayDigit] = 0;      
     }    
   } 
   else if (joystickMovement == DOWN) {
-    displayValues[currDisplay]--;
-    if (displayValues[currDisplay] < 0) {
-      displayValues[currDisplay] = encodingsNumber - 1;      
+    displayValues[currDisplayDigit]--;
+    if (displayValues[currDisplayDigit] < 0) {
+      displayValues[currDisplayDigit] = encodingsNumber - 1;      
     }  
   }
 }
 
-// function that moves the display based on the joystick movement (Y axis)
-void moveDisplay() {
+// function that moves the display digit based on the joystick movement (Y axis)
+void moveDisplayDigit() {
   int joystickMovement = checkJoystickMovement();
   
   if (joystickMovement == LEFT) {
-    currDisplay++;
-    if (currDisplay > displayCount - 1) {
-      currDisplay = 0;
+    currDisplayDigit++;
+    if (currDisplayDigit > displayCount - 1) {
+      currDisplayDigit = 0;
     }
   } 
   else if (joystickMovement == RIGHT) {
-    currDisplay--;
-    if (currDisplay < 0) {
-      currDisplay = displayCount - 1;
+    currDisplayDigit--;
+    if (currDisplayDigit < 0) {
+      currDisplayDigit = displayCount - 1;
     }
   }
 }
@@ -252,7 +252,7 @@ int checkJoystickMovement() {
 }
 
 // function that writes the current configuration of the 4 digit 7-segment display using a Shift Register
-void writeOnDisplays() {
+void writeOnDisplay() {
   static int dpBlinkState = HIGH;
   static unsigned long long lastDpBlinkTime = 0;
 
@@ -265,7 +265,7 @@ void writeOnDisplays() {
   for (int i = 0; i < displayCount; i++) {
     byte encoding = byteEncodings[displayValues[i]];
 
-    if (i == currDisplay && (displayLocked || dpBlinkState)) {
+    if (i == currDisplayDigit && (displayLocked || dpBlinkState)) {
       bitSet(encoding, dpBit);        
     }
     
@@ -273,8 +273,8 @@ void writeOnDisplays() {
     shiftOut(dataPin, clockPin, MSBFIRST, encoding);
     digitalWrite(latchPin, HIGH);
     
-    digitalWrite(displays[i], LOW);
+    digitalWrite(displayDigits[i], LOW);
     delay(muxDelay);
-    digitalWrite(displays[i], HIGH);
+    digitalWrite(displayDigits[i], HIGH);
   }
 }
