@@ -6,7 +6,7 @@ Introduction to Robotics laboratory homework, taken in the 3rd year at the Facul
 <hr>
 
 
-### [Homework #1](../master/Homework1.ino) 
+### [Homework #1](../main/Homework1.ino) 
 
 <details><summary> <b>Task Requirements</b> </summary></br>
 
@@ -30,7 +30,7 @@ Control a RGB led using 3 potentiometers.
 <hr>
 
 
-### [Homework #2](../master/Homework2.ino)
+### [Homework #2](../main/Homework2.ino)
 
 <details><summary> <b>Task Requirements</b> </summary></br>
 
@@ -94,7 +94,7 @@ Additional info:
 <hr>
 
 
-### [Homework #3](../master/Homework3.ino) 
+### [Homework #3](../main/Homework3.ino) 
 
 <details><summary> <b>Task Requirements</b> </summary></br>
 
@@ -151,7 +151,7 @@ Neighbors based on the current segment and joystick movement:
 <hr>
 
 
-### [Homework #4](../master/Homework4.ino) 
+### [Homework #4](../main/Homework4.ino) 
 
 <details><summary> <b>Task Requirements</b> </summary></br>
 
@@ -193,7 +193,7 @@ The system will go through 2 states:
 <hr>
 
 
-### [Homework #5](../master/Homework5/SNEK) 
+### [Homework #5](../main/Homework5/SNEK) 
 
 <details><summary> <b>Task Requirements</b> </summary></br>
 
