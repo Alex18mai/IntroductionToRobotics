@@ -197,6 +197,46 @@ The system will go through 2 states:
 
 <details><summary> <b>Task Requirements</b> </summary></br>
 
+ Create a menu for your game, emphasis on the game.  You should scroll on the LCD with the joystick.  The menu should include the following functionality:
+ 
+ <ol>
+  <li>When powering up a game, a greeting message should be shown for a few moments.</li>
+  <li>Should contain roughly the following categories:
+  
+  * Start game : 
+    + Starts the initial level of your game.
+  
+  * Highscore :
+  
+    + Initially, we have 0.
+  
+    + Update  it  when  the  game  is  done.   Highest  possible  score should be achieved by starting at a higher level.
+  
+    + Save the top 5+ values in EEPROM with name and score.
+  
+  * Settings :
+    + Enter name: The name should be shown in highscore.
+    
+    + Starting  level / Difficulty:  Set  the  starting  level / difficulty value. 
+    
+    + LCD contrast control (optional, it replaces the potentiome-ter).  Save it to eeprom.
+    
+    + LCD brightness control (mandatory, must change LED wirethat’s directly connected to 5v).  Save it to eeprom.
+    
+    + Matrix brightness control (see function setIntesnity from theledControl library).  Save it to eeprom.
+    
+    + Sounds on or off.  Save it to eeprom.
+    
+    + Extra stuff can include items specific to the game mechanics or other settings such as chosen theme song etc.  Again, save it to eeprom.
+    
+  * About : 
+    + Should include details about the creator(s) of the game. At least game name, author and github link or user.
+    
+  * How to play :
+    + Short and informative description.
+  </li>
+</ol>
+
 </details>
 
 <details><summary> <b>Picture</b> </summary></br>
@@ -207,7 +247,7 @@ The system will go through 2 states:
 
 <details><summary> <b>Video</b> </summary></br>
 
-[![Homework 5 - Video](https://img.youtube.com/vi/JqRFzsFz0iI/0.jpg?)](https://www.youtube.com/watch?v=JqRFzsFz0iI)
+[![Homework 5 - Video](https://img.youtube.com/vi/HBHDiPle934/0.jpg?)](https://www.youtube.com/watch?v=HBHDiPle934)
 
 </details>
 
