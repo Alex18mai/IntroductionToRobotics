@@ -246,6 +246,6 @@ Create a menu for your game, emphasis on the game.  You should scroll on the LCD
 
 <details><summary> <b>Video</b> </summary></br>
 
-[![Homework 5 - Video](https://img.youtube.com/vi/HBHDiPle934/0.jpg?)](https://www.youtube.com/watch?v=HBHDiPle934)
+[![Homework 5 - Video](https://img.youtube.com/vi/1QzTz00m6_8/0.jpg?)](https://www.youtube.com/watch?v=1QzTz00m6_8)
 
 </details>
