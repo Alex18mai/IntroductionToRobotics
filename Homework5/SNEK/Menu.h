@@ -8,39 +8,35 @@
 #include "Lcd.h"
 #include "Memory.h"
 
-const String menuText = "MENU";
+const int menuItemCount = 5,
+          aboutTextCount = 3,
+          howToPlayTextCount = 4,
+          settingsItemCount = 6;
 
-const int menuItemCount = 5;
-const String menuItemText[] = {"Start Game", "Highscores", "Settings", "About", "How To Play"};
-const int menuItemState[] = {STATE_GAME, STATE_MENU_HIGHSCORE, STATE_MENU_SETTINGS, STATE_MENU_ABOUT, STATE_MENU_HOW_TO_PLAY};
+const int menuItemState[] = {STATE_GAME, STATE_MENU_HIGHSCORE, STATE_MENU_SETTINGS, STATE_MENU_ABOUT, STATE_MENU_HOW_TO_PLAY},
+          settingsItemState[] = {STATE_SETTINGS_CHANGE_NAME, STATE_SETTINGS_DIFFICULTY, STATE_SETTINGS_LCD_BRIGHT, STATE_SETTINGS_MATRIX_BRIGHT, STATE_SETTINGS_SOUND, STATE_SETTINGS_RESET_HIGHSCORE};
 
-const String greetingsText = "Welcome to SNEK!"; 
+const String greetingsText = "Welcome to SNEK!",
+             menuText = "MENU",
+             menuItemText[] = {"Start Game", "Highscores", "Settings", "About", "How To Play"},
+             settingsItemText[] = {"Change Name", "Difficulty", "LCD Bright", "Matrix Bright", "Sound", "Reset Highscore"},
+             aboutText[] = {"SNEK", "by Alex Enache", "github Alex18mai"},
+             howToPlayText[] = {"> u are SNEK", "> u eat fruit", "> u grow and", "change direction"},
+             soundText[] = {"OFF", "ON"};
+
 const long greetingsTime = 3000;
+
+volatile int currentItem,
+             currentHighscore,
+             currentAbout,
+             currentHowToPlay,
+             currentSettings,
+             currentNameLetter;
+
 volatile long greetingsStart = 0;
 
-const int aboutTextCount = 3;
-const String aboutText[] = {"SNEK", "by Alex Enache", "github Alex18mai"};
-
-const int howToPlayTextCount = 4;
-const String howToPlayText[] = {"> u are SNEK", "> u eat fruit", "> u grow and", "change direction"};
-
-volatile bool menuChanged = true;
-
-volatile int currentItem;
-volatile int currentHighscore;
-volatile int currentAbout;
-volatile int currentHowToPlay;
-
-const int settingsItemCount = 6;
-const String settingsItemText[] = {"Change Name", "Difficulty", "LCD Bright", "Matrix Bright", "Sound", "Reset Highscore"};
-const int settingsItemState[] = {STATE_SETTINGS_CHANGE_NAME, STATE_SETTINGS_DIFFICULTY, STATE_SETTINGS_LCD_BRIGHT, STATE_SETTINGS_MATRIX_BRIGHT, STATE_SETTINGS_SOUND, STATE_SETTINGS_RESET_HIGHSCORE};
-
-const String soundText[] = {"OFF", "ON"};
-
-volatile int currentSettings;
-
-volatile int currentNameLetter;
-volatile bool lockedNameLetter;
+volatile bool lockedNameLetter,
+              menuChanged = true;
 
 void menuSetup() {
   currentItem = 0;

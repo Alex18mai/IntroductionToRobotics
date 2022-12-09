@@ -16,13 +16,13 @@
 
 #define SCORE_POSITION 5,1
 
-const byte rs = 9;
-const byte en = 8;
-const byte d4 = 7;
-const byte d5 = 13;
-const byte d6 = 5;
-const byte d7 = 4;
-const byte lcdBacklight = 6;
+const byte rs = 9,
+           en = 8,
+           d4 = 7,
+           d5 = 13,
+           d6 = 5,
+           d7 = 4,
+           lcdBacklight = 6;
 
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 

@@ -7,20 +7,20 @@
 
 const bool needInitEEPROM = false;  // set true to initialize EEPROM values
 
-const int highscoreStartingAddress = 0;
-const int settingsStartingAddress = 100;
-
-const int highscoreCount = 5;
-const int nameSize = 3;
+const int highscoreStartingAddress = 0,
+          settingsStartingAddress = 100,
+          highscoreCount = 5,
+          nameSize = 3;
 
 char highscoreNames[highscoreCount][nameSize];
 int highscorePoints[highscoreCount];
 
 char currentName[nameSize];
-volatile int startDifficulty;
-volatile int lcdBrightness;
-volatile int matrixBrightness;
-volatile int soundSetting;
+
+volatile int startDifficulty,
+             lcdBrightness,
+             matrixBrightness,
+             soundSetting;
 
 void readHighscores() {
   int address = highscoreStartingAddress;

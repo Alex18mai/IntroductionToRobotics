@@ -6,29 +6,28 @@
 #include "Matrix.h"
 #include "Lcd.h"
 
-const int moveInterval = 100;
-const int scorePerFood = 10;
+const int moveInterval = 100,
+          scorePerFood = 10;
 
-const String difficultyText = "     Diff : ";
-const String scoreText = "Score : ";
+const String difficultyText = "     Diff : ",
+             scoreText = "Score : ",
+             congratulations = "CONGRATULATIONS!",
+             reachedDif = "Reached diff ",
+             newHighscoreText = "NEW HIGHSCORE!";
 
-int snekX, snekY;
-int snekMovement;
-int score;
+int snekX, 
+    snekY,
+    snekMovement,
+    score,
+    difficulty;
 
-bool gameEndScreenChanged;
+bool gameEndScreenChanged,
+     initFood;
 
-const String congratulations = "CONGRATULATIONS!"; 
-const String reachedDif = "Reached diff "; 
-
-const String newHighscoreText = "NEW HIGHSCORE!";
-unsigned long lastMoved;
-bool initFood;
-
-int difficulty;
-unsigned long lastDiffChange;
-unsigned long diffChangeInterval = 10000;
-unsigned long endDelay = 2000;
+unsigned long lastMoved,
+              lastDiffChange,
+              diffChangeInterval = 10000,
+              endDelay = 2000;
 
 void gameSetup() {
   randomSeed(analogRead(0));

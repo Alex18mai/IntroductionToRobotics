@@ -5,9 +5,9 @@
 
 #include "Memory.h";
 
-const int buzzer = 3;
-const int buzzerSound = 1000;
-const int buzzerTime = 500;
+const int buzzer = 3,
+          buzzerSound = 1000,
+          buzzerTime = 500;
 
 void buzzerSetup() {
   pinMode(buzzer, OUTPUT);

@@ -6,21 +6,22 @@
 #include <LedControl.h>
 #include "Memory.h";
 
-const uint64_t matrixImageSmile = 0x003c420000226600;
-const uint64_t matrixImageMenu = 0xc3c3c3dbffe7c381;
-const uint64_t matrixImageTop = 0x0e0a2e20e2a2e207;
-const uint64_t matrixImageSettings = 0xffffc0ffff03ffff;
-const uint64_t matrixImageAbout = 0x6666667e7e667e7e;
-const uint64_t matrixImageHowToPlay = 0x6666667e7e666666;
-const uint64_t matrixImageGameEnd = 0x7090977107d1b790;
+const uint64_t matrixImageSmile = 0x003c420000226600,
+               matrixImageMenu = 0xc3c3c3dbffe7c381,
+               matrixImageTop = 0x0e0a2e20e2a2e207,
+               matrixImageSettings = 0xffffc0ffff03ffff,
+               matrixImageAbout = 0x6666667e7e667e7e,
+               matrixImageHowToPlay = 0x6666667e7e666666,
+               matrixImageGameEnd = 0x7090977107d1b790;
 
-const int dinPin = 12;
-const int clockPin = 11;
-const int loadPin = 10;
+const int dinPin = 12,
+          clockPin = 11,
+          loadPin = 10;
 
 LedControl lc = LedControl(dinPin, clockPin, loadPin, 1); // DIN, CLK, LOAD, No. DRIVER
 
 const byte matrixSize = 8;
+
 bool matrixChanged = true;
 
 byte matrix[matrixSize][matrixSize] = {
