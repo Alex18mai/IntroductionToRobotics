@@ -235,6 +235,26 @@ The system will go through 2 states:
   * How to play :
     + Short and informative description.
   </li>
+  <li> While playing the game display relevant information regarding:
+    
+  * Lives
+
+  * Level
+
+  * Score
+
+  * Time (Optional)
+
+  * Player name (Optional)
+    
+  </li>
+  
+  <li> Upon game ending: 
+  
+  * Screen 1: a message such as ”Congratulations on reaching level/scoreX”.  "You did better than y people".  etc.  Switches to screen 2 upon interaction (button press) or after a few moments.
+  
+  * Screen 2:  display relevant game info:  score, time, lives left etc. Must  inform  player  if  he/she  beat  the  highscore. This menu should only be closed by the player, pressing a button.
+  </li>
 </ol>
 
 </details>

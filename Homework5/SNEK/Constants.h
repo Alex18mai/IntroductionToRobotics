@@ -21,6 +21,7 @@
 #define STATE_SETTINGS_LCD_BRIGHT 10
 #define STATE_SETTINGS_MATRIX_BRIGHT 11
 #define STATE_SETTINGS_SOUND 12
+#define STATE_SETTINGS_RESET_HIGHSCORE 13
 
 /* ---------- end states ---------- */
 

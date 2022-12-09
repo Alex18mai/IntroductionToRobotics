@@ -9,7 +9,7 @@
 const int moveInterval = 100;
 const int scorePerFood = 10;
 
-const String difficultyText = "      Dif : ";
+const String difficultyText = "     Diff : ";
 const String scoreText = "Score : ";
 
 int snekX, snekY;
@@ -18,9 +18,17 @@ int score;
 
 bool gameEndScreenChanged;
 
-const String gameEndText = "SNEK got hit :("; 
-long lastMoved;
+const String congratulations = "CONGRATULATIONS!"; 
+const String reachedDif = "Reached diff "; 
+
+const String newHighscoreText = "NEW HIGHSCORE!";
+unsigned long lastMoved;
 bool initFood;
+
+int difficulty;
+unsigned long lastDiffChange;
+unsigned long diffChangeInterval = 10000;
+unsigned long endDelay = 2000;
 
 void gameSetup() {
   randomSeed(analogRead(0));
@@ -38,7 +46,9 @@ void gameInit() {
   snekY = 0;
   snekMovement = RIGHT;
   score = 0;
+  difficulty = startDifficulty;
   lastMoved = millis();
+  lastDiffChange = millis();
   matrix[snekX][snekY] = 1;
   initFood = true;
 }
@@ -135,6 +145,10 @@ void generateFood() {
 }
 
 void displayGame() {
+  if (millis() - lastDiffChange > diffChangeInterval) {
+    lastDiffChange = millis();
+    difficulty = min(difficulty + 1, MAX_DIFFICULTY);
+  }
   if (millis() - lastMoved > moveInterval * (MAX_DIFFICULTY - difficulty + 1)) {
     // game logic
     doGameMovement();        
@@ -156,11 +170,23 @@ void displayGameEnd() {
 
     lcd.clear();
     lcd.setCursor(FIRST_ROW);
-    lcd.print(gameEndText);
+    lcd.print(congratulations);
 
     lcd.setCursor(SECOND_ROW);
+    lcd.print(reachedDif);
+    lcd.print(difficulty);
+    lcd.print("!");
+
+    delay(endDelay);
+      
+    lcd.clear();
+    lcd.setCursor(FIRST_ROW);
     lcd.print(scoreText);
-    lcd.print(score);    
+    lcd.print(score);     
+    if (score > highscorePoints[0]) {
+      lcd.setCursor(SECOND_ROW);
+      lcd.print(newHighscoreText);
+    }
 
     for (int i=0; i<highscoreCount; i++) {
       if (score > highscorePoints[i]) {

@@ -31,9 +31,11 @@ volatile int currentHighscore;
 volatile int currentAbout;
 volatile int currentHowToPlay;
 
-const int settingsItemCount = 5;
-const String settingsItemText[] = {"Change Name", "Difficulty", "LCD Bright", "Matrix Bright", "Sound"};
-const int settingsItemState[] = {STATE_SETTINGS_CHANGE_NAME, STATE_SETTINGS_DIFFICULTY, STATE_SETTINGS_LCD_BRIGHT, STATE_SETTINGS_MATRIX_BRIGHT, STATE_SETTINGS_SOUND};
+const int settingsItemCount = 6;
+const String settingsItemText[] = {"Change Name", "Difficulty", "LCD Bright", "Matrix Bright", "Sound", "Reset Highscore"};
+const int settingsItemState[] = {STATE_SETTINGS_CHANGE_NAME, STATE_SETTINGS_DIFFICULTY, STATE_SETTINGS_LCD_BRIGHT, STATE_SETTINGS_MATRIX_BRIGHT, STATE_SETTINGS_SOUND, STATE_SETTINGS_RESET_HIGHSCORE};
+
+const String soundText[] = {"OFF", "ON"};
 
 volatile int currentSettings;
 
@@ -190,11 +192,11 @@ void displaySettingsDifficulty() {
     lcd.print(settingsItemText[currentSettings]);
 
     lcd.setCursor(SECOND_ROW);
-    lcd.print(difficulty);
+    lcd.print(startDifficulty);
     
     saveSettings();
 
-    putArrows(difficulty, MIN_DIFFICULTY, MAX_DIFFICULTY);  
+    putArrows(startDifficulty, MIN_DIFFICULTY, MAX_DIFFICULTY);  
   }
 }
 
@@ -243,7 +245,7 @@ void displaySettingsSound() {
     lcd.print(settingsItemText[currentSettings]);
 
     lcd.setCursor(SECOND_ROW);
-    lcd.print(soundSetting);
+    lcd.print(soundText[soundSetting]);
 
     saveSettings();
     

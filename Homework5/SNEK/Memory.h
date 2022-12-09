@@ -17,7 +17,7 @@ char highscoreNames[highscoreCount][nameSize];
 int highscorePoints[highscoreCount];
 
 char currentName[nameSize];
-volatile int difficulty;
+volatile int startDifficulty;
 volatile int lcdBrightness;
 volatile int matrixBrightness;
 volatile int soundSetting;
@@ -46,7 +46,7 @@ void readSettings() {
     address += sizeof(char);
   }
   
-  EEPROM.get(address, difficulty);
+  EEPROM.get(address, startDifficulty);
   address += sizeof(int);
 
   EEPROM.get(address, lcdBrightness);
@@ -64,13 +64,13 @@ void initHighscores() {
   
   for (int i=0; i<highscoreCount; i++) {
     for (int j=0; j<nameSize; j++) {
-      EEPROM.put(address, char('A'+i));
+      EEPROM.put(address, char('A'));
       address += sizeof(char);
     }
   }
   
   for (int i=0; i<highscoreCount; i++) {
-    EEPROM.put(address, highscoreCount-i);
+    EEPROM.put(address, 0);
     address += sizeof(int);
   }
 }
@@ -86,13 +86,13 @@ void initSettings() {
   EEPROM.put(address, MIN_DIFFICULTY);
   address += sizeof(int);
 
-  EEPROM.put(address, 2);
+  EEPROM.put(address, MAX_LCD_BRIGHT);
   address += sizeof(int);
 
-  EEPROM.put(address, 2);
+  EEPROM.put(address, MAX_MATRIX_BRIGHT);
   address += sizeof(int);
 
-  EEPROM.put(address, WITH_SOUND);
+  EEPROM.put(address, NO_SOUND);
   address += sizeof(int);
 }
 
@@ -129,7 +129,7 @@ void saveSettings() {
     address += sizeof(char);
   }
   
-  EEPROM.put(address, difficulty);
+  EEPROM.put(address, startDifficulty);
   address += sizeof(int);
 
   EEPROM.put(address, lcdBrightness);

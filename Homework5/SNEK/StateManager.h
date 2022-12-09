@@ -79,8 +79,14 @@ void manageCurrentState() {
       scrollItems(joystickMovement, currentSettings, 0, settingsItemCount - 1);
       returnToMenu(joystickMovement);   
       if (switchAction == BUTTON_CLICK) {
-        currentState = settingsItemState[currentSettings];
-        menuChanged = true;
+        if (settingsItemState[currentSettings] == STATE_SETTINGS_RESET_HIGHSCORE) {
+          initHighscores();
+          readHighscores();
+        }
+        else {
+          currentState = settingsItemState[currentSettings];
+          menuChanged = true;
+        }
       }                            
       break;
     
@@ -165,7 +171,7 @@ void manageCurrentState() {
     case STATE_SETTINGS_SOUND:
       scrollItems(joystickMovement, soundSetting, NO_SOUND, WITH_SOUND);
       returnToSettings(joystickMovement);
-      break;    
+      break; 
 
     default:
       break;
@@ -225,7 +231,7 @@ switch (currentState) {
     case STATE_SETTINGS_SOUND:
       displaySettingsSound();
       break;  
-
+    
     default:
       break;
   }         
