@@ -154,7 +154,7 @@ void manageCurrentState() {
       break;  
 
     case STATE_SETTINGS_DIFFICULTY:
-      scrollItems(joystickMovement, difficulty, MIN_DIFFICULTY, MAX_DIFFICULTY);
+      scrollItems(joystickMovement, startDifficulty, MIN_DIFFICULTY, MAX_DIFFICULTY);
       returnToSettings(joystickMovement);
       break;  
 
