@@ -9,9 +9,9 @@
 #include "Memory.h"
 
 const int menuItemCount = 5,
+          settingsItemCount = 6,
           aboutTextCount = 3,
-          howToPlayTextCount = 4,
-          settingsItemCount = 6;
+          howToPlayTextCount = 4;
 
 const int menuItemState[] = {STATE_GAME, STATE_MENU_HIGHSCORE, STATE_MENU_SETTINGS, STATE_MENU_ABOUT, STATE_MENU_HOW_TO_PLAY},
           settingsItemState[] = {STATE_SETTINGS_CHANGE_NAME, STATE_SETTINGS_DIFFICULTY, STATE_SETTINGS_LCD_BRIGHT, STATE_SETTINGS_MATRIX_BRIGHT, STATE_SETTINGS_SOUND, STATE_SETTINGS_RESET_HIGHSCORE};

@@ -161,7 +161,6 @@ void displayGame() {
   }
 }
 
-
 void displayGameEnd() {
   if (gameEndScreenChanged) {
     gameEndScreenChanged = false;
