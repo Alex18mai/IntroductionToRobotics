@@ -193,7 +193,7 @@ The system will go through 2 states:
 <hr>
 
 
-### [Homework #5](../master/Homework5) 
+### [Homework #5](../master/Homework5/SNEK) 
 
 <details><summary> <b>Task Requirements</b> </summary></br>
 
