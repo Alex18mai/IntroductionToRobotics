@@ -4,7 +4,6 @@
 #define SNEK_MATRIX_H
 
 #include <LedControl.h>
-
 #include "Memory.h";
 
 const uint64_t matrixImageSmile = 0x003c420000226600;
@@ -58,6 +57,5 @@ void displayMatrixImage(uint64_t image) {
     }
   }
 }
-
 
 #endif

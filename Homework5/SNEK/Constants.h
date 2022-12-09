@@ -25,6 +25,7 @@
 /* ---------- end states ---------- */
 
 /* ---------- bounds ---------- */
+
 #define MIN_DIFFICULTY 1
 #define MAX_DIFFICULTY 3
 
@@ -41,7 +42,9 @@
 /* ---------- end bounds ---------- */
 
 /* ---------- Serial ---------- */
+
 #define SERIAL_DATA_RATE 9600
+
 /* ---------- end Serial ---------- */
 
 #endif

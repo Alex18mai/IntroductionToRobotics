@@ -104,7 +104,4 @@ int checkJoystickMovement() {
   return NONE;  
 }
 
-
-
-
 #endif

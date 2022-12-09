@@ -182,5 +182,4 @@ void displayGameEnd() {
   }
 }
 
-
 #endif

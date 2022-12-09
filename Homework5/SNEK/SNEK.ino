@@ -10,7 +10,6 @@
 #include "StateManager.h"
 #include "Buzzer.h"
 
-
 void setup() {
   memorySetup();
 

@@ -251,6 +251,4 @@ void displaySettingsSound() {
   }
 }
 
-
-
 #endif

@@ -16,7 +16,6 @@
 
 #define SCORE_POSITION 5,1
 
-
 const byte rs = 9;
 const byte en = 8;
 const byte d4 = 7;
@@ -49,7 +48,6 @@ byte lcdMaskArrowDown[] = {
   B00000
 };
 
-
 void lcdSetup() {
   analogWrite(lcdBacklight, lcdBrightness * LCD_BRIGHT_FACTOR);  
   lcd.begin(16, 2);
@@ -58,6 +56,5 @@ void lcdSetup() {
   lcd.createChar(LCD_ARROW_UP, lcdMaskArrowUp);
   lcd.createChar(LCD_ARROW_DOWN, lcdMaskArrowDown);
 }
-
 
 #endif

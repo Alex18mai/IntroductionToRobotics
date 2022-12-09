@@ -54,7 +54,6 @@ void manageCurrentState() {
 
     case STATE_MENU:
       scrollItems(joystickMovement, currentItem, 0, menuItemCount - 1);
-
       if (switchAction == BUTTON_CLICK) {
         currentState = menuItemState[currentItem];
         menuChanged = true;
@@ -114,7 +113,6 @@ void manageCurrentState() {
       break;
 
     case STATE_SETTINGS_CHANGE_NAME:
-           
       if (!lockedNameLetter) {
         if (currentNameLetter == 0) {
           returnToSettings(joystickMovement);
@@ -232,7 +230,5 @@ switch (currentState) {
       break;
   }         
 }
-
-
 
 #endif

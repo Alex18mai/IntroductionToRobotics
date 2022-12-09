@@ -5,13 +5,13 @@
 
 #include <EEPROM.h>
 
+const bool needInitEEPROM = false;  // set true to initialize EEPROM values
+
 const int highscoreStartingAddress = 0;
 const int settingsStartingAddress = 100;
 
 const int highscoreCount = 5;
 const int nameSize = 3;
-
-const bool needInitEEPROM = false;  // set true to initialize EEPROM values
 
 char highscoreNames[highscoreCount][nameSize];
 int highscorePoints[highscoreCount];
@@ -141,6 +141,5 @@ void saveSettings() {
   EEPROM.put(address, soundSetting);
   address += sizeof(int);
 }
-
 
 #endif
